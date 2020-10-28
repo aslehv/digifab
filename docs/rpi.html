@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Asle Hvidsten - Digifab 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo 
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+								</a>-->
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="index.html"><img src="images/home.svg" width="96" height="72" style="z-index: 10000;"></a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu 
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>-->
+
+				<!-- Main -->
+					<div id="main" style="margin-top:-5%;">
+						<div class="inner">
+							<h1>Oppgave 4 - Raspberry Pi</h1>
+							<p>Mitt prosjekt er enkelt forklart en enkel timelapse via en webserver på raspberry pi-en. For å få tatt bilder har jeg tatt i bruk et webcamere jeg hadde liggende. Jeg har også benyttet enkel elktronikk til noen funksjoner.</p>
+							<img src="images/rpi.jpg" style="height:50vh">
+							<p><h2>Oppsett og Konfigurasjon av Rpi</h2>
+							Jeg startet med å montere pi-en i dekselet som fulgte med. Deretter satt jeg i medfølgende microSD og startet installasjon via medfølgende programvare. Koplet til en skjerm og et tastatur, koplet til wifi, skrudde så på VNC og sjekket ip så fort som mulig for å slippe å være koplet til direkte.</p>
+							<p>Når jeg kom inn via VNC endret jeg standardoppløsning til 1920x1080 ved rspi-config. Deretter var det tilkopling og testing av webcamera etterfulgt av installasjon av apache og fswebcam samt testing av dette.</p>
+							<p><h2>Webserver og Webside</h2>
+							Webserveren er basert på apache. Deretter har jeg laget en side som egentlig kun viser frem et bilde. Javascript sørger for at bildet lastes inn på nytt hvert 2. sekund.
+							<br /> Koden til nettsiden finnes på github repoet <a target="auto_blank" href="https://github.com/aslehv/digifab/tree/master/prosjektfiler/Oppgave%204%20-%20Rpi/index.html"> HER.</a></p>
+							<p><h2>Elektronikk</h2>
+							<img src="images/rpi2.jpg" style="height:40vh;">
+							<ol><li>LED diode som lyser hver gang et bilde taes.</li>
+								<li>Knapp som tvinger at det skal tas et bilde hver gang den trykkes</li>
+								<li>Disse knappene justerer hastigheten for hvor ofte bilder skal tas automatisk, venstre senker hastighet med 1sek/trykk og høyre øker.
+								</ol>
+								LED dioden og knappene er respektivt koplet til gpio porter på raspberry pi-en. LED dioden har også fått spandert på seg en resistor.
+							</p><p><h2>Python kode</h2>
+							Hjertet av prosjektet ligger selvsagt i python koden.
+							<br />Jeg benytter litt forskjellige metoder for å utføre forskjellige oppgaver her. Det koden utfører er å ved hjelp av funksjonene jeg har laget ta et bilde og lagre dette så det kan brukes på nettsiden i et gitt intervall antall sekunder. </p>
+							<p>For hver gang et bilde tas (funksjonen take_pic() kjøres) lyser LED diode og et bilde tas med programmet fswebcam kjørt ved hjelp av os.System().
+							<br /> ettersom jeg ikke kan plukke opp knappetrykk samtidig som jeg bruker sleep() i loopen kjører jeg loopen i en egen thread. Dette gjør at loopen vil kjøre med sin respektive tid basert på variabelen wait i funksjonen sleep().
+							pause i main threaden gjør at koden vil vente til det skjer noe (en av knappene trykkes). Dersom bildeknappen trykkes kjøres den samme funksjonen som loopen bruker. Dersom en av hastighetsknappene trykkes endres wait med +- 1 sekund.
+							<br />Python koden finnes i github repoet <a target="auto_blank" href="https://github.com/aslehv/digifab/tree/master/prosjektfiler/Oppgave%204%20-%20Rpi/oving4.py">HER.</a></p>
+							<p><h2>Video</h2>
+							<video width="400px" height="600px" controls>
+							<source src="images/video1.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+							</video>
+							
+							
+						</div>
+					</div>
+
+				<!-- Footer 
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>-->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

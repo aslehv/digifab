@@ -1,0 +1,12 @@
+<img src="img.jpg" id="img">
+<script>
+window.onload = func()
+
+function func(){
+let node = document.getElementById('img');
+node.src = "img.jpg"+"?time="+new Date().getTime();
+console.log(node.src);
+setTimeout(func, 2000);
+
+}
+</script>
