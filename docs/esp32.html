@@ -51,12 +51,19 @@
 					<div id="main" style="margin-top:-5%;">
 						<div class="inner">
 							<h1>Oppgave 6 - ESP32</h1>
-							Som mange av disse oppgavene synes jeg det er litt vanskelig å komme på å lage et godt "prosjekt" ut fra oppgavespesifikasjonene. Etter litt teting og eksperimentering med blant annet temperatursensor, led lys, wifi og smtp. ESP32 har innebygde touch sensorer, denne endrer seg basert på konduktivitet. Da tenkte jeg videre at jeg kunne bruke sensorer for å måle om noden er i vann eller ikke. Videre tenkte jeg at jeg kan bruke dette til å varlse på en nettside om det er lite vann i vannbeholderen på kaffemaskinen min. Videoen under er en kort demo hvor vann nivået synker slik at konduktiviteten på kabelen nede i vannet endres, dermed oppdateres nettsiden til å be om å fylle vann.
+							Som mange av disse oppgavene synes jeg det er litt vanskelig å komme på å lage et godt "prosjekt" ut fra oppgavespesifikasjonene. Og arbeidet begynte med testing, og eksperimentering med blant annet temperatursensor, led lys, wifi og smtp. ESP32 har innebygde touch sensorer, denne endrer seg basert på konduktivitet. Da tenkte jeg videre at jeg kunne bruke sensorer for å måle om noden er i vann eller ikke. Videre tenkte jeg at jeg kan bruke dette til å varlse på en nettside om det er lite vann i vannbeholderen på kaffemaskinen min. Videoen under er en kort demo hvor vann nivået synker slik at konduktiviteten på kabelen nede i vannet endres, dermed oppdateres nettsiden til å be om å fylle vann.
 							<video style="height:50vh;" controls>
 							<source src="images/esp32.mp4" type="video/mp4">
 							Your browser does not support the video tag.
 							</video>
-							<p>Jeg bruker her port T6, som er samme som GPIO#14. Funsjonen som brukes for å lese fra porten er touchRead(T6). Jeg har også lagt til funksjonalitet slik at et LED lys skrus på dersom det trengs å fylle vann. Det gjøres ved å sette porten den er koplet til HIGH for lys på og tilsvarende LOW for lys av. Koden finnes på under github repositoriet <a href="" target="auto_blank">HER</a>.
+							<p>Jeg bruker her port T6, som er samme som GPIO#14. Funsjonen som brukes for å lese fra porten er touchRead(T6). Jeg har også lagt til funksjonalitet slik at et LED lys skrus på dersom det trengs å fylle vann. Det gjøres ved å sette porten den er koplet til HIGH for lys på og tilsvarende LOW for lys av. Koden finnes på under github repositoriet <a href="https://github.com/aslehv/digifab/tree/master/prosjektfiler/Oppgave%206%20-%20ESP32/sketch_jan24d" target="auto_blank">HER</a>.
+							</p><p>
+							<figure>
+							<img src="images/esp32.jpg" style="width:15vw; border:1px solid black;">
+							<figcaption>Oppkopling i breadboard.</figcaption>
+							</figure>
+							</p><p>
+							Videre er webserveren laget på mal fra dronebotworkshop sin artikkel "getting started with ESP32", med noen modifikasjoner.
 						</div>
 					</div>
 
